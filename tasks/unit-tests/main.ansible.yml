@@ -1,0 +1,4 @@
+---
+- name: Test go_version_installed
+  ansible.builtin.import_tasks:
+    file: unit-tests/go_version_installed.ansible.yml

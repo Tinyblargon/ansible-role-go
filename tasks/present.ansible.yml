@@ -1,0 +1,16 @@
+---
+- name: Check if version file exists
+  ansible.builtin.stat:
+    path: "{{ go_version_file }}"
+  register: go_version_file_check
+
+- name: Get Go version
+  ansible.builtin.slurp:
+    src: "{{ go_version_file }}"
+  register: go_version_file_content
+  when: go_version_file_check.stat.exists
+
+- name: Setup new Go environment
+  ansible.builtin.include_tasks:
+    file: setup.ansible.yml
+  when: go_version_installed != go_version or go_state == "present-reinstall"

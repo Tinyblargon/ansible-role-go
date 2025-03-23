@@ -1,0 +1,9 @@
+---
+- name: Run unit tests
+  hosts: localhost
+  gather_facts: false
+  tasks:
+    - name: Run unit tests
+      ansible.builtin.include_role:
+        name: tinyblargon.go
+        tasks_from: unit-tests/main.ansible.yml

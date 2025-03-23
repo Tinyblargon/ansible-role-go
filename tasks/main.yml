@@ -1,0 +1,11 @@
+---
+- name: Setup Go environment
+  ansible.builtin.include_tasks:
+    file: present.ansible.yml
+  when: go_state in ["present", "present-reinstall"]
+
+- name: Remove Go environment
+  ansible.builtin.file:
+    path: "{{ go_bin_path }}"
+    state: absent
+  when: go_state == "absent"

@@ -1,0 +1,7 @@
+---
+go_version_file: "{{ go_bin_path }}/VERSION"
+
+go_version_installed: >-
+  {{(go_version_file_content.content | b64decode
+      | regex_search('\d+\.\d+\.\d+'))
+    if go_version_file_content.content is defined else '' }}

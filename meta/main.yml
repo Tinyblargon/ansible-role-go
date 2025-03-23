@@ -1,0 +1,22 @@
+---
+galaxy_info:
+  role_name: go
+  namespace: tinyblargon
+  author: Tinyblargon
+  description: Ansible role to install the Go programming language.
+  license: MIT
+  min_ansible_version: "2.14.3"
+  platforms:
+    - name: Ubuntu
+      versions:
+        - focal
+        - jammy
+        - focal
+    - name: Debian
+      versions:
+        - bullseye
+        - buster
+  galaxy_tags:
+    - go
+    - golang
+    - programming

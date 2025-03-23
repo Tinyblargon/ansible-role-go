@@ -1,0 +1,22 @@
+---
+go_version: "1.24.1"
+go_state: present
+go_checksum: ""
+
+# Exposed variables in case you want to override them not supported or documented
+go_architecture_map:
+  32-bit: "386"
+  64-bit: amd64
+  aarch64: arm64
+  amd64: amd64
+  arm: arm64
+  armv6l: armv6
+  armv7l: armv7
+  x86_64: amd64
+go_base_path: /usr/local
+go_bin_path: "{{ go_base_path }}/go"
+go_download_url: "https://dl.google.com/go/go{{ go_version }}.{{ go_os }}-{{ go_architecture_map[ansible_architecture] }}.tar.gz"
+go_os: "{{ ansible_system | lower }}"
+
+# Used for unit testing
+go_ci_ignore: false

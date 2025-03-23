@@ -1,0 +1,31 @@
+---
+- name: Create temporary directory
+  ansible.builtin.tempfile:
+    state: directory
+  register: go_temp_dir
+  become: false
+
+- name: Download Go
+  ansible.builtin.get_url:
+    url: "{{ go_download_url }}"
+    dest: "{{ go_temp_dir.path }}/go.tar.gz"
+    mode: "0644"
+    checksum: "{{ go_checksum }}"
+  become: false
+
+- name: Remove current go environment
+  ansible.builtin.file:
+    path: "{{ go_bin_path }}"
+    state: absent
+
+- name: Extract Go
+  ansible.builtin.unarchive:
+    src: "{{ go_temp_dir.path }}/go.tar.gz"
+    dest: "{{ go_base_path }}"
+    remote_src: true
+
+- name: Remove temporary directory
+  ansible.builtin.file:
+    path: "{{ go_temp_dir.path }}"
+    state: absent
+  become: false

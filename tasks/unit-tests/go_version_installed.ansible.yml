@@ -1,0 +1,29 @@
+---
+- name: Test go_version_installed
+  ansible.builtin.assert:
+    that: go_version_installed == item.output
+    fail_msg: >-
+      {{ 'Test: ' + item.name + ', Expected: ' + item.output | string
+      + ' , but got: ' + go_version_installed | string }}
+  loop:
+    - name: input undefined
+      output: ""
+      input:
+    - name: content undefined
+      output: ""
+      input:
+        go_version_file_content:
+    - name: content empty
+      output: ""
+      input:
+        go_version_file_content:
+          content: ""
+    - name: array with version
+      output: "1.22.4"
+      input:
+        go_version_file_content:
+          content: "{{'go1.22.4 \ntime 2024-05-30T19:26:07Z' | b64encode }}"
+  vars:
+    go_version_file_content: >-
+      {{ item.input.go_version_file_content | default(omit) }}
+  ignore_errors: "{{ go_ci_ignore }}"
