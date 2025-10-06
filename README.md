@@ -1,5 +1,7 @@
 # Ansible Role: go
 
+[![CI](https://github.com/Tinyblargon/ansible-role-go/actions/workflows/ci.yml/badge.svg)](https://github.com/Tinyblargon/ansible-role-go)
+
 Ansible role to install the [Go](https://golang.org) programming language.
 
 ## Requirements
