@@ -10,11 +10,11 @@ n/a
 
 ## Role Variables
 
-| Variable Name| Type  | Default Value| Description|
-| :------------|:-----:| :-----------:| :----------|
-| go_version:  | string| "1.24.1"     | Go version to download and install, when the version changes the old install will be removed and a new one will be created.|
-| go_state:    | string| "present"    | When `"present"` Go will be installed, when `"absent"` Go will be removed. With `"present-reinstall"` the version check is ignored and go will be reinstalled on every run.|
-| go_checksum: | string| ""           | Checksum of the downloaded archive, syntax `"sha256:cb2396..."`.|
+| Variable Name| Type  | Default Value| Description
+|:-------------|:-----:|:------------:|:-----------
+| go_version:  | string| "1.24.1"     | Go version to download and install, when the version changes the old install will be removed and a new one will be created.
+| go_state:    | string| "present"    | When `"present"` Go will be installed, when `"absent"` Go will be removed. With `"present-reinstall"` the version check is ignored and go will be reinstalled on every run.
+| go_checksum: | string| ""           | Checksum of the downloaded archive, syntax `"sha256:cb2396..."`.
 
 ## Dependencies
 
